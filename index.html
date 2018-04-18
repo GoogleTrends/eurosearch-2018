@@ -30,8 +30,8 @@
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif|Roboto:100,400" rel="stylesheet">
-    <link href="css/euroviz.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif|Roboto:100,400|Rubik" rel="stylesheet">
+    <link href="css/euroviz.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -105,12 +105,12 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                 <h2>The Eurovision Song Contest</h2>
-                <p>42 candidates, each representing one European country, took part in the Eurovision Song Contest this year. But only 26 made it to the final on May 13th in Kiev, Ukraine.</p>
-                <p>Getting through to the big final was decided during two semi-finals before the event, with a professional jury and the public voting.</p>
+                <p>43 candidates, each representing one European country, will take part in the Eurovision Song Contest this year. But only 26 will make it to the final on May 12 in Lisbon, Portugal.</p>
+                <p>Getting through to the big final will be decided during two semi-finals before the event, with a professional jury and the public voting.</p>
                 <p>We wondered if searches would reflect each country’s voting patterns. If they did, the map would look like the one below. It shows the <span class="highlight qualifiers">20 countries that would have past the semi-finals in search</span> and the <span class="highlight losers">16 eliminated participants</span>.<span class="highlight finalists">6 countries</span>, host Ukraine and the 'Big Five', are automatically qualified for the final.</p>
-                <p>Votes based on search activity 'predicted' 15 out of 20 qualified semi-finalists correctly. Use the switch to toggle the colors between the predicted and the real qualified countries.</p>
-                <p><span class="switch-label-left">Predicted</span><input type="checkbox" id="real-search-switch-one" name="set-name" class="switch-input">
-                    <label for="real-search-switch-one" class="switch-label switch-label-1000"><span class="toggle--on">Reality</span><span class="toggle--off">Reality</span></label> </p>
+                <!--p>Votes based on search activity 'predicted' 15 out of 20 qualified semi-finalists correctly. Use the switch to toggle the colors between the predicted and the real qualified countries.</p-->
+                <!--p><span class="switch-label-left">Predicted</span><input type="checkbox" id="real-search-switch-one" name="set-name" class="switch-input">
+                    <label for="real-search-switch-one" class="switch-label switch-label-1000"><span class="toggle--on">Reality</span><span class="toggle--off">Reality</span></label> </p-->
                 
                 </div>
             </div>
@@ -120,7 +120,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <p class="annotation">A few countries on the map <span class="highlight nonparticipant">are not participating</span>. Russia pulled out of the competition after its candidate was banned from Ukraine because she had toured the disputed Crimea region. Turkey was a regular participant until 2012 but hasn't entered the competition since. The national broadcasters of Slovakia and Bosnia announced they were unable to secure funds for participation. And Kosovo, finally, is not recognized as an independent state by various European countries and isn't a member of the organizing European Broadcasting Union.</p>
+                        <p class="annotation">A few countries on the map <span class="highlight nonparticipant">are not participating</span>. Turkey was a regular participant until 2012 but hasn't entered the competition since. The national broadcasters of Slovakia and Bosnia and Herzegovina announced they were unable to secure funds for participation. And Kosovo, finally, is not recognized as an independent state by various European countries and isn't a member of the organizing European Broadcasting Union.</p>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                     <!--p>Switch to the real<input type="checkbox" id="real-search-switch-two" name="set-name" class="switch-input">
                         <label for="real-search-switch-two" class="switch-label"><span class="toggle--on">Eurovision voting</span><span class="toggle--off">Eurovision voting</span></label></p-->
                     <p class="annotation"><span class="highlight finalists">Automatically qualified countries</span> <span class="highlight qualifiers">semi-final qualifiers</span> and <span class="highlight losers">eliminated countries</span></p>
-                    <p>Small countries like San Marino and Malta are visible on the squarified map. Notice Australia in the bottom right corner. The Contest is very popular in Australia and the country was allowed to participate in 2015 for the 60th anniversary of the festival. It was supposed to be a one-off event, but Australia participated again in 2016 and is competing this year too.</p>
+                    <p>Small countries like San Marino and Malta are visible on the squarified map. Notice Australia in the bottom right corner. The Contest is very popular in Australia and the country was allowed to participate in 2015 for the 60th anniversary of the festival. It was supposed to be a one-off event, but Australia participated in all editions since then.</p>
                 </div>
             </div>
         </div>
@@ -158,7 +158,7 @@
                 <h2>12 points go to...</h2>
                 <p>After the singing, every participating country awards a set of 1 to 8 points to 8 other countries. The two countries they liked the most receive 10 and 12 points. The country that earned the biggest amount of points after all voting is done, wins it.</p>
                 <p>We focus on the vote by the viewers here. Another set of points is awarded by a professional jury from each country.</p>
-                <p><span class="highlight qualifiers">Want to know what artists your country would have awarded if searches would equal points? Check it below!</span></p>
+                <p><span class="highlight finalists">Want to know what artists your country would have awarded if searches would equal points? Check it below!</span></p>
            </div>
         </div>
         <div class="row">
@@ -226,21 +226,21 @@
             </div>
             <div class="col-md-3">
                 <h3>Points by search</h3>
-                <p class="annotation">Points earned by searches</p>
+                <p class="annotation">Points earned by searches*</p>
                 <ul class="countrylist" id="country-list">
                 </ul>
             </div>
             <div class="col-md-3">
                 <h3>Eurovision points</h3>
-                <p class="annotation">Points earned by televoting</p>
-                <ul class="countrylist" id="country-list-real">
-                </ul>
+                <p class="annotation">Available after May 12</p>
+                <!--ul class="countrylist" id="country-list-real">
+                </ul-->
             </div>
         </div>
         <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-6">
-            <!--p class="annotation">*Some countries lacked sufficient search data to award all search points</p-->
+            <p class="annotation">*Some countries lacked sufficient search data to award all search points</p>
             </div>
         </div>    
     </section>
@@ -251,11 +251,12 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Final result</h2>
-                    <p>Let's compare the ranking generated by searches with the actual Eurovision result.</p>
+                    <!--p>Let's compare the ranking generated by searches with the actual Eurovision result.</p-->
+                    <p>If points in the Eurovision Song Contest would be awarded by searches from all participating countries, these would be the final results. The real results will be available after May 12.</p>
                 </div>
             </div>
             <div id="slopegraph"></div>
-            <div class="container">
+            <!--div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <p>Some findings:</p>
                         <p><span class="highlight qualifiers">Portugal</span> was the winner in both search and the real competition. The wide gap in searches with the number 2 on the ranking was reflected in the viewers votes (see the maps in the next section).</p>
@@ -263,7 +264,7 @@
                         <p><span class="highlight qualifiers">Australia</span> is the exception in the top 5. Australia was heavily searched for but received almost no votes from viewers (they did receive a lot of points from the professional juries). People searching for Australia were probably just wondering why a country so far away from Europe is participating in Eurovision.</p>
                         <p>A similar explanation could explain the much higher place for <span class="highlight qualifiers">Israel</span> in the search ranking then in the competition ranking.</p>
                         <p>The one country in the top 5 not picked up by the searches is <span class="highlight qualifiers">Moldova</span>. Neighbouring <span class="highlight qualifiers">Romania</span> landed the seventh spot in the competition although it was last in search.</p>
-                </div>
+                </div-->
             </div>
         </div>
     </section>
@@ -274,7 +275,8 @@
             <div class="container">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2>Results by country</h2>
-                    <p>These maps show from what countries every participant received viewer votes or would have received based on searches.</p>
+                    <!--p>These maps show from what countries every participant received viewer votes or would have received based on searches.</p-->
+                    <p>These maps show from what countries every partiicpant received votes or would have received based on searches.</p>
                 </div>
             </div>
             <div id="sticky">
@@ -290,10 +292,10 @@
                         <div class="legend-item ten">10</div>
                         <div class="legend-item twelve">12</div>
                     </div>
-                    <div id="smswitch">
+                    <!--div id="smswitch">
                         <input type="checkbox" id="real-search-switch-four" name="set-name" class="switch-input">
                         <label for="real-search-switch-four" class="switch-label switch-label-1000"><span class="toggle--on">Sort by televoting results</span><span class="toggle--off">Sort by televoting results</span></label>
-	                </div>
+	                </div-->
             </div>
             <div id="smallmultiples">
             </div>
@@ -308,11 +310,11 @@
                     <h3>Team</h3>
                     <p><strong>Design & Development: </strong><a href="http://www.maartenlambrechts.com">Maarten Lambrechts</a></p>
                     <p><strong>Art Direction: </strong><a href="https://twitter.com/albertocairo">Alberto Cairo</a> & <a href="https://twitter.com/smfrogers">Simon Rogers</a></p>
-                    <p><strong>Data gathering: </strong><a href="https://twitter.com/cguibourg">Clara Guibourg</a></p>
+                    <p><strong>Data gathering: </strong><a href="https://twitter.com/beckypinners">Becky Pinnington</a></p>
                 </div>
                 <div class="col-md-6">
                     <h3>Methodology</h3>
-                    <p>The search activity data for every candidate was collected on May 12 (1 day before the final) and spans the seven days prior to this date. The data gathered were searches made for every country's participating act together with the topic Eurovision (for example for Belgium: "Blanche Eurovision"). Whenever possible, we used <a href="https://support.google.com/trends/answer/4359550?hl=en">topics rather than exact search strings</a> to ensure different spellings were included. In San Marino there was too little search activity to award all points.</p>
+                    <p>The search activity data for every candidate was collected on May 1 and spans the seven days prior to this date. The data gathered were searches made for every country's participating act together with the topic Eurovision (for example for Belgium: "Blanche Eurovision"). Whenever possible, we used <a href="https://support.google.com/trends/answer/4359550?hl=en">topics rather than exact search strings</a> to ensure different spellings were included. In San Marino there was too little search activity to award all points.</p>
                     <p>Visuals built with <a href="https://d3js.org/">D3</a>, <a href="https://github.com/sebastian-meier/d3.geo2rect">geo2rect</a>, Bootstrap <a href="https://startbootstrap.com/template-overviews/grayscale/">Grayscale</a> template, <a href="https://github.com/lipis/flag-icon-css">flag-icon-css</a> and circular flags by <a href="http://www.flaticon.com/packs/countrys-flags">Freepik</a>. Opening image by EBU.</p>
                     <p>If you would like to know more, please read the <a href="http://www.maartenlambrechts.com/2017/05/03/the-eurosearch-song-contest-making-of.html">complete making-of</a>.</p>
                 </div>

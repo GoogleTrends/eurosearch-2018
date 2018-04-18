@@ -1,9 +1,15 @@
+:root {
+  --bg-color: #64B9C7;
+  --darkblue:#283369;
+  --lightblue: #5DB3E1;
+}
+
 body {
   width: 100%;
   height: 100%;
-  font-family: "Noto Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Noto serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: white;
-  background-color: #000037;
+  background-color: var(--bg-color);
 }
 html {
   width: 100%;
@@ -51,7 +57,7 @@ a:focus {
   margin-bottom: 0;
   text-transform: uppercase;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #000037;
+  background-color: var(--bg-color);
 }
 .navbar-custom .navbar-toggle {
   color: white;
@@ -111,7 +117,7 @@ a:focus {
   }
   .navbar-custom.top-nav-collapse {
     padding: 0;
-    background: #000037;
+    background: var(--bg-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   }
 }
@@ -171,15 +177,15 @@ a:focus {
 }
 .countries-section, .results-section {
   width: 100%;
-  padding: 250px 0;
+  padding: 50px 0;
   color: white;
   background-color: white;
-  color: #000037;
+  color: var(--bg-color);
 }
 
 @media (min-width: 767px) {
   .content-section {
-    padding-top: 250px;
+    padding-top: 50px;
   }
 }
 .btn {
@@ -192,23 +198,23 @@ a:focus {
   border-radius: 0;
 }
 .btn-default {
-  border: 1px solid #ff5454;
-  color: #ff5454;
+  border: 1px solid var(--darkblue);
+  color: var(--darkblue);
   background-color: #ffffff;
   width: 180px;
 }
 .btn-default:hover,
 .btn-default:focus {
-  border: 1px solid #ff5454;
+  border: 1px solid var(--lightblue);
   outline: none;
   color: white;
-  background-color: #ff5454;
+  background-color: var(--lightblue);
 }
 
 .btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default, .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover, .btn-default.inverted.active {
     color: #ffffff;
-    background-color: #ff5454;
-    border-color: #DC0046;
+    background-color: var(--lightblue);
+    border-color: var(--darkblue);
 }
 
 /*Switch*/
@@ -221,12 +227,12 @@ a:focus {
   min-width: 112px;
   cursor: pointer;
   text-align: left;
-  padding: 0 0 16px 48px;
+  padding: 0 0 0 48px;
   text-transform: uppercase;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
-  color: #DC0046;
+  color: #283068;
 }
 .switch-label-left {
   padding: 0;
@@ -282,10 +288,10 @@ a:focus {
   display: inline-block;
 }
 .switch-input:checked + .switch-label:before {
-  background-color: #ff5471;
+  background-color: var(--darkblue);
 }
 .switch-input:checked + .switch-label:after {
-  background-color: #DC0046;
+  background-color: var(--darkblue);
   -ms-transform: translate(110%, -50%);
   -webkit-transform: translate(110%, -50%);
   transform: translate(110%, -50%);
@@ -374,15 +380,18 @@ span.highlight {
 }
 
 .finalists.highlight {
-  background-color: #dc0000;
+  /*background-color: #dc0000;*/
+  background-color: #283369;
 }
 
 .losers.highlight {
-  background-color: #7e7eb4;
+  /*background-color: #7e7eb4;*/
+  background-color: #E8BF52;
 }
 
 .qualifiers.highlight {
-  background-color: #ff5454;
+  /*background-color: #ff5454;*/
+  background-color: #4997D1;
 }
 
 .nonparticipant.highlight {
@@ -391,15 +400,15 @@ span.highlight {
 
 .white.highlight {
     background-color: white;
-    color:#000037;
+    color:var(--bg-color);
 }
 
 #map-three-legend {
-  background-color: #ff5454;
+  background-color: var(--darkblue);
   padding: 4px;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  color: #ffa8b8;
+  color: var(-lightblue);
 }
 
 /* Country dropdown */
@@ -423,7 +432,7 @@ span.highlight {
 
 ul.final-countries {
   border-radius: 0;
-  color: #000037;
+  color: var(--bg-color);
   padding: 4px;
   height: 200px;
   min-width: 180px;
@@ -454,13 +463,13 @@ ul.final-countries div {
 }
 
 .vote-legend {
-  background-color: #ff5454;
+  /*background-color: var(--lightblue);*/
   padding: 4px;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
 }
 .real {
-  color: #000037;
+  color: #000000;
 }
 
 #sticky {
@@ -471,7 +480,7 @@ ul.final-countries div {
   position: -o-sticky;
   top: 50px;
   height: 70px;
-  background-color: #000037;
+  background-color: var(--bg-color);
   margin-bottom: 16px;
   z-index: 100;
 }
@@ -515,8 +524,12 @@ p.smallmultiple {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+#smallmultiples .row {
+  margin-top: 30px;
+}
+
 footer {
   background-color: #ffffff;
-  color: #000037;
+  color: #64B9C7;
   font-size: 10px;
 }

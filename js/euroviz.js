@@ -138,15 +138,15 @@ var qualification = [
     { countrycode: 'NLD', countrycode2: 'nl', qualifiedreal: true, name: 'Netherlands', round: 'second', qualified: true },
     { countrycode: 'NOR', countrycode2: 'no', qualifiedreal: true, name: 'Norway', round: 'second', qualified: false },
     { countrycode: 'POL', countrycode2: 'pl', qualifiedreal: true, name: 'Poland', round: 'first', qualified: false },
-    { countrycode: 'PRT', countrycode2: 'pt', qualifiedreal: true, name: 'Portugal', round: 'first', qualified: true },
+    { countrycode: 'PRT', countrycode2: 'pt', qualifiedreal: true, name: 'Portugal', round: 'final', qualified: true },
     { countrycode: 'ROU', countrycode2: 'ro', qualifiedreal: true, name: 'Romania', round: 'second', qualified: false },
-    { countrycode: 'RUS', countrycode2: 'ru', qualifiedreal: false, name: 'Russia', round: 'none', qualified: false },
+    { countrycode: 'RUS', countrycode2: 'ru', qualifiedreal: false, name: 'Russia', round: 'first', qualified: false },
     { countrycode: 'SMR', countrycode2: 'sm', qualifiedreal: false, name: 'San Marino', round: 'second', qualified: false },
     { countrycode: 'SRB', countrycode2: 'rs', qualifiedreal: false, name: 'Serbia', round: 'second', qualified: true },
     { countrycode: 'SVK', countrycode2: 'sk', qualifiedreal: false, name: 'Slovakia', round: 'none', qualified: false },
     { countrycode: 'SVN', countrycode2: 'si', qualifiedreal: false, name: 'Slovenia', round: 'first', qualified: false },
     { countrycode: 'SWE', countrycode2: 'se', qualifiedreal: true, name: 'Sweden', round: 'first', qualified: true },
-    { countrycode: 'UKR', countrycode2: 'ua', qualifiedreal: true, name: 'Ukraine', round: 'final', qualified: true },
+    { countrycode: 'UKR', countrycode2: 'ua', qualifiedreal: true, name: 'Ukraine', round: 'first', qualified: true },
     { countrycode: 'TUR', countrycode2: 'tr', qualifiedreal: false, name: 'Turkey', round: 'none', qualified: false }
 ];
 
@@ -423,10 +423,10 @@ d3.csv('data/votes_20170512.csv', function (data) {
 
                     //Clear previous voting
                     d3.selectAll('#map-three rect').style('stroke-width', 2);
-                    d3.selectAll('#map-three rect').style('fill', '#7e7eb4');
+                    d3.selectAll('#map-three rect').style('fill', qualifiersColor);
                     inthefinal.forEach(function (country) {
                         d3.selectAll("#map-three rect.id-" + country.countrycode)
-                            .style("fill", "#ff5454");
+                            .style("fill", finalistColor);
                     });
                     d3.selectAll('#map-three rect.nonparticipant').style('fill', '#777777')
                     d3.selectAll("#map-three circle").remove();
@@ -509,6 +509,10 @@ d3.csv('data/votes_20170512.csv', function (data) {
                 }
 
                 //Draw maps
+                let finalistColor = "#283369";
+                let losersColor = "#E8BF52";
+                let qualifiersColor = "#4997D1";
+
                 var svgOne = d3.select('#map-one').append('svg').attr('width', config.width).attr('height', config.height);
                 var svgTwo = d3.select('#map-two').append('svg').attr('width', config.width).attr('height', config.height);
                 var mapThreeWidth = $('#map-three').width();
@@ -540,7 +544,7 @@ d3.csv('data/votes_20170512.csv', function (data) {
                             }
                             else { return 'id-' + country; }
                         })
-                        .style("fill", "#7e7eb4")
+                        .style("fill", qualifiersColor)
                         .style("stroke", "#ffffff")
                         .style("stroke-width", 2);
                     cellgroup.append("text")
@@ -580,17 +584,17 @@ d3.csv('data/votes_20170512.csv', function (data) {
                     .attr('font-size', '16px')
                     .attr('font-family', 'Roboto')
                     .text('Search');
-                svgFive.append('text')
+                /*svgFive.append('text')
                     .attr('x', 240)
                     .attr('y', 20)
                     .attr('font-size', '16px')
                     .attr('text-anchor', 'middle')
                     .style('font-family', 'Roboto')
-                    .text('Eurovision');
+                    .text('Eurovision');*/
 
                 var countryheight = 24;
                 //Connecting lines
-                var connections = svgFive.selectAll('line.connection')
+                /*var connections = svgFive.selectAll('line.connection')
                     .data(rankingconnect)
                     .enter().append('line')
                     .attr('class', function (d) { return 'connection id-' + d.key; })
@@ -602,7 +606,7 @@ d3.csv('data/votes_20170512.csv', function (data) {
                     .style('stroke', function(d){
                         return '#eeeeee';
                     })
-                    .style('stroke-width', 2);
+                    .style('stroke-width', 2);*/
 
                 //Left part, search results
                 svgFive.selectAll('image')
@@ -629,7 +633,7 @@ d3.csv('data/votes_20170512.csv', function (data) {
                     .html(function (d, i) { return (i + 1) + '. ' + lookup[d.key].name /*+ ': <tspan class="score id-' + d.key + '">' + d.value + '</tspan>'*/; });
 
                 //Right part, real scores
-                svgFive.selectAll('image.real')
+                /*svgFive.selectAll('image.real')
                     //.data(rankingReal)
                     .data(overallrank)
                     .enter().append('image')
@@ -639,10 +643,10 @@ d3.csv('data/votes_20170512.csv', function (data) {
                     .attr('y', function (d, i) { return 30 + countryheight * i; })
                     .attr('class', function (d) { return 'id-' + d.Country; })
                     .attr('width', countryheight - 2)
-                    .attr('height', countryheight - 2);
+                    .attr('height', countryheight - 2);*/
                 
                 //If screen is big enough, draw labels on the right
-                if (slopegraphWidth > 400){
+                /*if (slopegraphWidth > 400){
                 var labelsReal = svgFive.selectAll('text.countrylabel.real')
                     .data(overallrank)
                     .enter().append('text')
@@ -656,8 +660,8 @@ d3.csv('data/votes_20170512.csv', function (data) {
                     .attr('id', function (d) { return d.Country; })
                     .style('fill', '#000037')
                     .style('opacity', function(d) { return opacityscale(d.value); })
-                    .html(function (d, i) { return (i + 1) + '. ' + lookup[d.Country].name /*+ ': <tspan class="score id-' + d.key + '">' + d.value + '</tspan>'*/; });
-                }
+                    .html(function (d, i) { return (i + 1) + '. ' + lookup[d.Country].name ; });
+        }*/
 
                 //sort config.grid first on x, than on y for the shuffling rectangle
                 var countrygrid = [];
@@ -717,20 +721,21 @@ d3.csv('data/votes_20170512.csv', function (data) {
 
                         //Add a map for the Google searches
                         var smallmultGoogle = countryrow.append('div')
-                            .attr('class', 'col-md-6 col-xs-12')
+                            //.attr('class', 'col-md-6 col-xs-12')
+                            .attr('class', 'col-md-12 col-xs-12')
                             .append('div');
                         smallmultGoogle.append('h4').text('Searches: ' + rankinggoogleLookup[element.key] + ' points');
                         smallmultGoogle.append('div')
                             .attr('class', 'smallmultiple google ' + element.key);
 
                         //Add a map for the real votes
-                        var smallmultReal = countryrow.append('div')
+                        /*var smallmultReal = countryrow.append('div')
                             .attr('class', 'col-md-6 col-xs-12')
                             .append('div');
                         smallmultReal.append('h4').text('Televoting: ' + rankingrealLookup[element.key] + ' points');
                         //smallmultReal.append('h4').text('Televoting');
                         smallmultReal.append('div')
-                            .attr('class', 'smallmultiple real ' + element.key);
+                            .attr('class', 'smallmultiple real ' + element.key);*/
                     })
                     var map = gridMap()
                         .x(function (d) { return +d.x; })
@@ -834,22 +839,24 @@ d3.csv('data/votes_20170512.csv', function (data) {
                             .attr('class', 'map-one-label')
                             .text(lookup[country].name);
                     }
-                    //Kiev
-                    var kievcoord = [30.515, 50.456];
-                    var kievLabel = [30.899, 50.756];
+                    //Lisbon
+                    var lisboncoord = [-9.150, 38.703];
+                    var lisbonLabel = [-9.150, 38.703];
                     d3.select('#map-one svg').append('rect')
-                        .attr('x', projection(kievcoord)[0])
-                        .attr('y', projection(kievcoord)[1])
+                        .attr('x', projection(lisboncoord)[0])
+                        .attr('y', projection(lisboncoord)[1])
                         .attr('height', 8)
                         .attr('width', 8)
-                        .style('stroke', '#ffffff')
-                        .style('fill', 'none')
+                        .style('stroke', '#333333')
+                        .style('fill', '#ffffff')
                         .style('stroke-width', 2);
                     d3.select('#map-one svg').append('text')
-                        .attr('x', projection(kievLabel)[0])
-                        .attr('y', projection(kievLabel)[1])
+                        .attr('x', projection(lisbonLabel)[0])
+                        .attr('y', projection(lisbonLabel)[1])
+                        .attr('dx', -52)
+                        .attr('dy', 14)
                         .attr('class', 'map-one-label')
-                        .text('KIEV')
+                        .text('LISBON')
                         .style('opacity', 1)
                         .style('text-anchor', 'start');
 
@@ -880,30 +887,30 @@ d3.csv('data/votes_20170512.csv', function (data) {
                     //Color maps
                     finalists.forEach(function (country) {
                         d3.selectAll("#map-one svg .id-" + country.countrycode + ", #map-two svg .id-" + country.countrycode)
-                            .style("fill", "#dc0000");
+                            .style("fill", finalistColor);
                     });
                     //Initial colors for first map
                     losers.forEach(function (country) {
                         d3.selectAll("#map-one svg .id-" + country)
-                            .style("fill", "#7e7eb4");
+                            .style("fill", losersColor);
                     });                    
                     qualifiers.forEach(function (country) {
                         d3.selectAll("#map-one svg .id-" + country.countrycode + ", #map-two svg .id-" + country.countrycode)
-                            .style("fill", "#ff5454");
+                            .style("fill", qualifiersColor);
                     });
                     //Second map uses real colors
                     qualifiersReal.forEach(function (country) {
                             d3.selectAll("#map-two svg .id-" + country.countrycode)
-                                .style("fill", "#ff5454");
+                                .style("fill", qualifiersColor);
                         });
                     losersReal.forEach(function (country) {
                             d3.selectAll("#map-two svg .id-" + country)
-                                .style("fill", "#7e7eb4");
+                                .style("fill", losersColor);
                             });
 
                     inthefinal.forEach(function (country) {
                         d3.selectAll("#map-three rect.id-" + country.countrycode)
-                            .style("fill", "#ff5454");
+                            .style("fill", finalistColor);
                     })
                     nonparticipants.forEach(function (countrycode) {
                         d3.selectAll("#map-one svg path.id-" + countrycode + ", #map-two svg path.id-" + countrycode + ", #map-three svg rect.id-" + countrycode)
