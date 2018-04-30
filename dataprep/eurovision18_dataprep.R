@@ -33,6 +33,11 @@ write.csv(ranking, "../data/overallranking_2018-04-18.csv", row.names = FALSE)
 participants <- read_excel("participants.xlsx")
 participants <- mutate(participants, countrycode2 = countrycode(countrycode, 'iso3c', 'iso2c')) %>%
   mutate(name = countrycode(countrycode, 'iso3c', 'country.name'))
+##Kosovo
+participants$countrycode2[participants$countrycode == "KOS"] <- "KO"
+participants$name[participants$countrycode == "KOS"] <- "Kosovo"
+##UK
+participants$name[participants$name == "United Kingdom"] <- "UK"
 
 ##Join the simulated qualifiers
 qualified <- ranking
@@ -40,7 +45,7 @@ qualified$qualified <- TRUE
 participants <- left_join(participants, qualified, by = c("countrycode" = "Country"))
 participants[is.na(participants)] <- FALSE
 ##AFTER QUALIFICATION
-##JOIN LIST WITH REAL QUALIFIERS, ADD TO COLUMN qualifiedreaml
+##JOIN LIST WITH REAL QUALIFIERS, ADD TO COLUMN qualifiedreal
 
-write.csv(qualified, "../qualification_2018-04-18.csv", row.names = FALSE)
+write.csv(participants, "../data/qualification_2018-04-18.csv", row.names = FALSE)
 

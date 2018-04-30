@@ -161,7 +161,7 @@ a:focus {
 .intro-credits {
   font-family: 'Roboto';
   font-weight: 100;
-  margin-bottom: 10px;
+  margin-bottom: -10px;
 }
 
 #newslablogo-intro path, #newslablogo-intro rect {
