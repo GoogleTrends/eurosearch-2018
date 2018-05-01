@@ -244,15 +244,14 @@ function gridMap() {
         return chart;
     };
 
-
     return chart;
 }
 
 //Load data and start drawing
-d3.csv('data/votes_2018-04-18.csv', function (data) {
+d3.csv('data/votes_2018-05-01.csv', function (data) {
     d3.csv('data/peoplesvotes_20170514.csv', function (realdata) {
-        d3.csv('data/overallranking_2018-04-18.csv', function (overallrank) {
-                d3.csv('data/qualification_2018-04-18.csv', function (qualific) {
+        d3.csv('data/overallranking_2018-05-01.csv', function (overallrank) {
+                d3.csv('data/qualification_2018-05-01.csv', function (qualific) {
 
                 //Create lookup objects for country names and country codes
                 var lookup = {};
@@ -850,7 +849,7 @@ d3.csv('data/votes_2018-04-18.csv', function (data) {
                     }
                     //Lisbon
                     var lisboncoord = [-9.150, 38.703];
-                    var lisbonLabel = [-9.150, 38.703];
+                    var lisbonLabel = [-9.850, 37.703];
                     d3.select('#map-one svg').append('rect')
                         .attr('x', projection(lisboncoord)[0])
                         .attr('y', projection(lisboncoord)[1])
@@ -862,12 +861,12 @@ d3.csv('data/votes_2018-04-18.csv', function (data) {
                     d3.select('#map-one svg').append('text')
                         .attr('x', projection(lisbonLabel)[0])
                         .attr('y', projection(lisbonLabel)[1])
-                        .attr('dx', -52)
-                        .attr('dy', 14)
+                        //.attr('dx', -52)
+                        //.attr('dy', 14)
                         .attr('class', 'map-one-label')
                         .text('LISBON')
                         .style('opacity', 1)
-                        .style('text-anchor', 'start');
+                        .style('text-anchor', 'end');
 
                     //Map 2
                     var geojson = geo2rect.compute(data);
