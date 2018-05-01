@@ -252,7 +252,7 @@ a:focus {
   position: absolute;
   margin: 0;
   outline: 0;
-  top: 33%;
+  top: 50%;
   -ms-transform: translate(0, -50%);
   -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
@@ -291,7 +291,7 @@ a:focus {
   background-color: var(--darkblue);
 }
 .switch-input:checked + .switch-label:after {
-  background-color: var(--darkblue);
+  background-color: var(--lightblue);
   -ms-transform: translate(110%, -50%);
   -webkit-transform: translate(110%, -50%);
   transform: translate(110%, -50%);

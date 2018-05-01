@@ -579,7 +579,7 @@ d3.csv('data/votes_2018-05-01.csv', function (data) {
                 });
 
                 //Color scale and opacityscale
-                var z = d3.scaleSequential(d3.interpolatePlasma);
+                var z = d3.scaleSequential(d3.interpolateViridis);
                 z.domain([0, d3.max(ranking, function (d) { return d.value; })]);
                 var opacityscale = d3.scaleLinear()
                     .domain([0, d3.max(ranking, function (d) { return d.value; })])
@@ -725,7 +725,7 @@ d3.csv('data/votes_2018-05-01.csv', function (data) {
                         smallmult.append('div')
                             .attr('class', 'row row-' + element.key);
                         var countryrow = d3.select('.row.row-' + element.key);
-                        countryrow.append('h3').html((index + 1) + '. ' + '<span class="flag-icon flag-icon-' + lookup[element.key].iso2 + ' flag-icon-squared"></span> ' + lookup[element.key].name);
+                        countryrow.append('h3').html((index + 1) + '. ' + '<span class="flag-icon flag-icon-' + lookup[element.key].iso2.toLowerCase() + ' flag-icon-squared"></span> ' + lookup[element.key].name);
 
                         //Add a map for the Google searches
                         var smallmultGoogle = countryrow.append('div')
@@ -761,8 +761,8 @@ d3.csv('data/votes_2018-05-01.csv', function (data) {
                             .strokecolor("#ffffff"));
 
                     //Color small multiples
-                    var smColorScale = d3.scaleSequential(d3.interpolateInferno)
-                        .domain([14, 0]);
+                    var smColorScale = d3.scaleSequential(d3.interpolateViridis)
+                        .domain([12,0]);
 
                     //Color the legend
                     d3.selectAll('.legend-item')
@@ -861,8 +861,6 @@ d3.csv('data/votes_2018-05-01.csv', function (data) {
                     d3.select('#map-one svg').append('text')
                         .attr('x', projection(lisbonLabel)[0])
                         .attr('y', projection(lisbonLabel)[1])
-                        //.attr('dx', -52)
-                        //.attr('dy', 14)
                         .attr('class', 'map-one-label')
                         .text('LISBON')
                         .style('opacity', 1)
