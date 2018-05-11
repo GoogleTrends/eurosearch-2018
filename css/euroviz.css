@@ -291,7 +291,8 @@ a:focus {
   background-color: var(--darkblue);
 }
 .switch-input:checked + .switch-label:after {
-  background-color: var(--lightblue);
+  /*background-color: var(--lightblue);*/
+  background-color: #cccccc;
   -ms-transform: translate(110%, -50%);
   -webkit-transform: translate(110%, -50%);
   transform: translate(110%, -50%);

@@ -252,7 +252,6 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
     d3.csv('data/peoplesvotes_20170514.csv', function (realdata) {
         d3.csv('data/overallranking_2018-05-11.csv', function (overallrank) {
                 d3.csv('data/qualification_2018-05-11.csv', function (qualific) {
-
                 //Create lookup objects for country names and country codes
                 var lookup = {};
                 var countryscore = {};
@@ -268,6 +267,7 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                 //Qualification data
                 qualific.forEach(function(d){
                     d.qualified = (d.qualified == "TRUE");
+                    d.qualifiedreal = (d.qualifiedreal == "TRUE");
                 })
 
                 qualific.forEach(function (element) {
@@ -280,21 +280,21 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                     if (!element.qualified && element.round != 'none') {
                         losers.push(element.countrycode);
                     }
-                    /*if (!element.qualifiedreal && element.round != 'none') {
+                    if (!element.qualifiedreal && element.round != 'none') {
                         losersReal.push(element.countrycode);
-                    }*/
+                    }
                     if ((element.round == "first" || element.round == "second") && element.qualified) {
                         var obj = {};
                         obj.countrycode = element.countrycode;
                         obj.name = element.name;
                         qualifiers.push(obj);
                     }
-                    /*if ((element.round == "first" || element.round == "second") && element.qualifiedreal) {
+                    if ((element.round == "first" || element.round == "second") && element.qualifiedreal) {
                         var obj = {};
                         obj.countrycode = element.countrycode;
                         obj.name = element.name;
                         qualifiersReal.push(obj);
-                    }*/
+                    }
                     if (element.round == "none") {
                         nonparticipants.push(element.countrycode);
                     }
@@ -304,8 +304,8 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                 });
                 
                 //Countries in the final AFTER THE SEMIS
-                //var inthefinal = finalists.concat(qualifiersReal);
-                let inthefinal = finalists.concat(qualifiers);
+                var inthefinal = finalists.concat(qualifiersReal);
+                //let inthefinal = finalists.concat(qualifiers);
                 inthefinal = inthefinal.sort(function (a, b) {
                     var nameA = a.name;
                     var nameB = b.name;
@@ -896,23 +896,23 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                             .style("fill", finalistColor);
                     });
                     //Initial colors for first map
-                    losers.forEach(function (country) {
+                    /*losers.forEach(function (country) {
                         d3.selectAll("#map-one svg .id-" + country + ", #map-two svg .id-" + country)
                             .style("fill", losersColor);
                     });                    
                     qualifiers.forEach(function (country) {
                         d3.selectAll("#map-one svg .id-" + country.countrycode + ", #map-two svg .id-" + country.countrycode)
                             .style("fill", qualifiersColor);
-                    });
+                    });*/
                     //Second map uses real colors AFTER THE SEMIS
-                    /*qualifiersReal.forEach(function (country) {
+                    qualifiersReal.forEach(function (country) {
                             d3.selectAll("#map-two svg .id-" + country.countrycode)
                                 .style("fill", qualifiersColor);
                         });
                     losersReal.forEach(function (country) {
                             d3.selectAll("#map-two svg .id-" + country)
                                 .style("fill", losersColor);
-                            });*/
+                            });
 
                     inthefinal.forEach(function (country) {
                         d3.selectAll("#map-three rect.id-" + country.countrycode)
@@ -934,21 +934,21 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                     if (!this.checked) {
                         qualifiers.forEach(function (country) {
                             d3.selectAll("#map-one svg .id-" + country.countrycode).transition().duration(1000)
-                                .style("fill", "#ff5454");
+                                .style("fill", "#4997D1");
                         });
                         losers.forEach(function (countrycode) {
                             d3.selectAll("#map-one svg .id-" + countrycode).transition().duration(1000)
-                                .style("fill", "#7e7eb4");
+                                .style("fill", "#E8BF52");
                         });
                     }
                     if (this.checked) {
                         qualifiersReal.forEach(function (country) {
                             d3.selectAll("#map-one svg .id-" + country.countrycode).transition().duration(1000)
-                                .style("fill", "#ff5454");
+                                .style("fill", "#4997D1");
                         });
                         losersReal.forEach(function (countrycode) {
                             d3.selectAll("#map-one svg .id-" + countrycode).transition().duration(1000)
-                                .style("fill", "#7e7eb4");
+                                .style("fill", "#E8BF52");
                         });
                     }
                 });
