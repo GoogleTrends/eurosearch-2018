@@ -896,14 +896,14 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                             .style("fill", finalistColor);
                     });
                     //Initial colors for first map
-                    /*losers.forEach(function (country) {
+                    losers.forEach(function (country) {
                         d3.selectAll("#map-one svg .id-" + country + ", #map-two svg .id-" + country)
                             .style("fill", losersColor);
                     });                    
                     qualifiers.forEach(function (country) {
                         d3.selectAll("#map-one svg .id-" + country.countrycode + ", #map-two svg .id-" + country.countrycode)
                             .style("fill", qualifiersColor);
-                    });*/
+                    });
                     //Second map uses real colors AFTER THE SEMIS
                     qualifiersReal.forEach(function (country) {
                             d3.selectAll("#map-two svg .id-" + country.countrycode)
