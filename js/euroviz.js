@@ -248,10 +248,10 @@ function gridMap() {
 }
 
 //Load data and start drawing
-d3.csv('data/votes_2018-05-08.csv', function (data) {
+d3.csv('data/votes_2018-05-11.csv', function (data) {
     d3.csv('data/peoplesvotes_20170514.csv', function (realdata) {
-        d3.csv('data/overallranking_2018-05-08.csv', function (overallrank) {
-                d3.csv('data/qualification_2018-05-08.csv', function (qualific) {
+        d3.csv('data/overallranking_2018-05-11.csv', function (overallrank) {
+                d3.csv('data/qualification_2018-05-11.csv', function (qualific) {
 
                 //Create lookup objects for country names and country codes
                 var lookup = {};
