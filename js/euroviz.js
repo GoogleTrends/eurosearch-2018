@@ -250,7 +250,7 @@ function gridMap() {
 //Load data and start drawing
 d3.csv('data/votes_2018-05-11.csv', function (data) {
     d3.csv('data/peoplesvotes_20170514.csv', function (realdata) {
-        d3.csv('data/overallranking_2018-05-11.csv', function (overallrank) {
+        d3.csv('data/overallranking_2018-05-14.csv', function (overallrank) {
                 d3.csv('data/qualification_2018-05-11.csv', function (qualific) {
                 //Create lookup objects for country names and country codes
                 var lookup = {};
@@ -457,7 +457,8 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                         .style("fill", "none")
                         .style("stroke", "#ffffff")
                         .style("stroke-width", 2);
-
+                    
+                    //UNCOMMENT
                     /*var realcircles = cellgroup.selectAll("circle.real")
                         .data(pointsToAnimateReal)
                         .enter().append("circle")
@@ -491,6 +492,7 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                                 .html('<div class="pull-left points" width="30px">' + d.points + '</div> <span class="flag-icon flag-icon-' + lookup[d.to].iso2.toLowerCase() + ' flag-icon-squared"></span> ' + lookup[d.to].name);
                         });
                     
+                    //UNCOMMENT
                     //Real votes animation
                     /*realcircles.transition().ease(d3.easeExpInOut)
                         .delay(function (d, i) {
@@ -592,17 +594,18 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                     .attr('font-size', '16px')
                     .attr('font-family', 'Roboto')
                     .text('Search');
-                /*svgFive.append('text')
+                
+                svgFive.append('text')
                     .attr('x', 240)
                     .attr('y', 20)
                     .attr('font-size', '16px')
                     .attr('text-anchor', 'middle')
                     .style('font-family', 'Roboto')
-                    .text('Eurovision');*/
+                    .text('Eurovision');
 
                 var countryheight = 24;
                 //Connecting lines
-                /*var connections = svgFive.selectAll('line.connection')
+                var connections = svgFive.selectAll('line.connection')
                     .data(rankingconnect)
                     .enter().append('line')
                     .attr('class', function (d) { return 'connection id-' + d.key; })
@@ -614,7 +617,7 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                     .style('stroke', function(d){
                         return '#eeeeee';
                     })
-                    .style('stroke-width', 2);*/
+                    .style('stroke-width', 2);
 
                 //Left part, search results
                 svgFive.selectAll('image')
@@ -639,9 +642,9 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                     .style('fill', '#000037')
                     //.style('opacity', function (d) { return opacityscale(d.value); })
                     .html(function (d, i) { return (i + 1) + '. ' + lookup[d.key].name /*+ ': <tspan class="score id-' + d.key + '">' + d.value + '</tspan>'*/; });
-
+                
                 //Right part, real scores
-                /*svgFive.selectAll('image.real')
+                svgFive.selectAll('image.real')
                     //.data(rankingReal)
                     .data(overallrank)
                     .enter().append('image')
@@ -651,10 +654,10 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                     .attr('y', function (d, i) { return 30 + countryheight * i; })
                     .attr('class', function (d) { return 'id-' + d.Country; })
                     .attr('width', countryheight - 2)
-                    .attr('height', countryheight - 2);*/
+                    .attr('height', countryheight - 2);
                 
                 //If screen is big enough, draw labels on the right
-                /*if (slopegraphWidth > 400){
+                if (slopegraphWidth > 400){
                 var labelsReal = svgFive.selectAll('text.countrylabel.real')
                     .data(overallrank)
                     .enter().append('text')
@@ -669,7 +672,7 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                     .style('fill', '#000037')
                     .style('opacity', function(d) { return opacityscale(d.value); })
                     .html(function (d, i) { return (i + 1) + '. ' + lookup[d.Country].name ; });
-        }*/
+        }
 
                 //sort config.grid first on x, than on y for the shuffling rectangle
                 var countrygrid = [];
@@ -736,6 +739,7 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                         smallmultGoogle.append('div')
                             .attr('class', 'smallmultiple google ' + element.key);
 
+                        //UNCOMMENT
                         //Add a map for the real votes
                         /*var smallmultReal = countryrow.append('div')
                             .attr('class', 'col-md-6 col-xs-12')
