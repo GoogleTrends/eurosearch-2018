@@ -201,7 +201,7 @@ function gridMap() {
                 .style('text-anchor', 'middle')
                 .style("fill", "#ffffff")
                 .style('opacity', 0.5)
-                .style('font-size', 10)
+                .style('font-size', 9)
                 .style('font-family', 'Roboto')
                 .text(function (d) { return d.countrycode; })
 
