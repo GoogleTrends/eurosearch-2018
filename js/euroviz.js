@@ -249,7 +249,7 @@ function gridMap() {
 
 //Load data and start drawing
 d3.csv('data/votes_2018-05-11.csv', function (data) {
-    d3.csv('data/peoplesvotes_20170514.csv', function (realdata) {
+    d3.csv('data/peoplesvotes_2018-05-14.csv', function (realdata) {
         d3.csv('data/overallranking_2018-05-14.csv', function (overallrank) {
                 d3.csv('data/qualification_2018-05-11.csv', function (qualific) {
                 //Create lookup objects for country names and country codes
@@ -458,16 +458,15 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                         .style("stroke", "#ffffff")
                         .style("stroke-width", 2);
                     
-                    //UNCOMMENT
-                    /*var realcircles = cellgroup.selectAll("circle.real")
+                    var realcircles = cellgroup.selectAll("circle.real")
                         .data(pointsToAnimateReal)
                         .enter().append("circle")
                         .attr("cx", (cellsizeHalf * config.grid[selcountrycode].x + cellsizeHalf * 0.5))
                         .attr("cy", (cellsizeHalf * config.grid[selcountrycode].y + cellsizeHalf * 0.5))
                         .attr("r", function (d) {return d.points; })
                         .style("fill", "none")
-                        .style("stroke", "#000000")
-                        .style("stroke-width", 2);*/
+                        .style("stroke", "#E8BF52")
+                        .style("stroke-width", 2);
 
                     //Put the text on top, above the new circles
                     d3.selectAll("#map-three text").raise()
@@ -492,9 +491,8 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                                 .html('<div class="pull-left points" width="30px">' + d.points + '</div> <span class="flag-icon flag-icon-' + lookup[d.to].iso2.toLowerCase() + ' flag-icon-squared"></span> ' + lookup[d.to].name);
                         });
                     
-                    //UNCOMMENT
                     //Real votes animation
-                    /*realcircles.transition().ease(d3.easeExpInOut)
+                    realcircles.transition().ease(d3.easeExpInOut)
                         .delay(function (d, i) {
                             return 600 * (10 - i);
                         })
@@ -508,8 +506,8 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
                         .on("end", function (d, i) {
                             d3.select("#country-list-real")
                                 .insert('li', ':first-child')
-                                .html('<div class="pull-left points" width="30px">' + d.points + '</div> <span class="flag-icon flag-icon-' + lookup[d.to].iso2toLowerCase + ' flag-icon-squared"></span> ' + lookup[d.to].name);
-                        });*/
+                                .html('<div class="pull-left points" width="30px">' + d.points + '</div> <span class="flag-icon flag-icon-' + lookup[d.to].iso2.toLowerCase() + ' flag-icon-squared"></span> ' + lookup[d.to].name);
+                        });
 
                     d3.select("#map-three rect.id-" + selcountrycode).raise().transition().duration(500)
                         .style("fill", "#ffffff");
@@ -732,22 +730,21 @@ d3.csv('data/votes_2018-05-11.csv', function (data) {
 
                         //Add a map for the Google searches
                         var smallmultGoogle = countryrow.append('div')
-                            //.attr('class', 'col-md-6 col-xs-12')
-                            .attr('class', 'col-md-12 col-xs-12')
+                            .attr('class', 'col-md-6 col-xs-12')
+                            //.attr('class', 'col-md-12 col-xs-12')
                             .append('div');
                         smallmultGoogle.append('h4').text('Searches: ' + rankinggoogleLookup[element.key] + ' points');
                         smallmultGoogle.append('div')
                             .attr('class', 'smallmultiple google ' + element.key);
 
-                        //UNCOMMENT
                         //Add a map for the real votes
-                        /*var smallmultReal = countryrow.append('div')
+                        var smallmultReal = countryrow.append('div')
                             .attr('class', 'col-md-6 col-xs-12')
                             .append('div');
                         smallmultReal.append('h4').text('Televoting: ' + rankingrealLookup[element.key] + ' points');
                         //smallmultReal.append('h4').text('Televoting');
                         smallmultReal.append('div')
-                            .attr('class', 'smallmultiple real ' + element.key);*/
+                            .attr('class', 'smallmultiple real ' + element.key);
                     })
                     var map = gridMap()
                         .x(function (d) { return +d.x; })
